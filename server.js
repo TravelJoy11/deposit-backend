@@ -6,7 +6,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 console.log("Loaded Stripe key:", process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://deposit.travel-and-joy.com"
+}));
 app.use(express.json());
 
 app.post("/create-payment-intent", async (req, res) => {
